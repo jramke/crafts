@@ -1,0 +1,51 @@
+---
+import '../theme.css';
+import '../main.scss';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={title} />
+		<meta property="og:image" content={new URL("/og-image.png", Astro.url)} />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:image" content={new URL("/og-image.png", Astro.url)} />
+	</head>
+	<body>
+		<div class="flex flex-col min-h-[100vh]">
+			<main class="flex-grow py-section">
+				<slot />
+			</main>
+			<footer class="content-grid py-8 text-center text-muted font-handwriting leading-tight text-2xl">
+				<p>
+					Made by <a href="https://joostramke.com">Joost.</a>
+				</p>
+			</footer>
+		</div>
+		<svg height="0" width="0" style="position:absolute;">
+			<defs>
+				<clipPath id="external-link-icon-path" clipPathUnits="objectBoundingBox">
+					<path d="M0.995,0.04 c-0.007,-0.016,-0.019,-0.029,-0.035,-0.035 c-0.008,-0.003,-0.016,-0.005,-0.025,-0.005 H0.065 C0.029,0,0,0.029,0,0.065 s0.029,0.065,0.065,0.065 H0.777 L0.019,0.889 c-0.025,0.025,-0.025,0.067,0,0.092 c0.013,0.013,0.029,0.019,0.046,0.019 s0.033,-0.006,0.046,-0.019 L0.87,0.223 V0.935 c0,0.036,0.029,0.065,0.065,0.065 s0.065,-0.029,0.065,-0.065 V0.065 c0,-0.008,-0.002,-0.017,-0.005,-0.025"/>
+				</clipPath>
+			</defs>
+		</svg>
+	</body>
+</html>

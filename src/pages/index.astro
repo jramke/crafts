@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Item from '../components/item.astro';
+import HandPath from '../components/hand-path.astro';
+import HandPathThin from '../components/hand-path-thin.astro';
+
+import { MagneticButton } from '../crafts/magnetic-button';
+import { SafetyTriangle } from '../crafts/safety-triangle';
+import { WaterSlider } from '../crafts/water-slider';
+---
+
+<Layout title="Crafts by Joost.">
+	<div class="prose">
+		<div class="content-grid pb-section">
+			<h1 class="mb-0">Crafts</h1>
+			<h2 class="mt-0 text-2xl text-muted font-handwriting leading-tight">Experimental UI laboratory by <a href="https://joostramke.com">Joost</a>.</h2>
+			<p class="text-balance">
+				A collection of user interfaces, components and explorations, that seamlessly blend form and function.
+			</p>
+			<div class="breakout opacity-50 pt-6 max-w-[600px]">
+				<div class="md:hidden">
+					<HandPath />
+				</div>
+				<div class="hidden md:block">
+					<HandPathThin />
+				</div>
+			</div>
+		</div>
+		<div class="space-y-section">
+			<Item title="Safety Triangle Menu" tags={["vanilla", "gsap"]} date={new Date('04-01-2024')} folderName="safety-triangle">
+				<p slot="text">
+					Predictive dropdown menu with visual safety indicators for smoother UX while navigating through the neseted menu items.
+				</p>
+				<SafetyTriangle client:load />
+			</Item>
+			<Item title="Water Slider" tags={["vanilla", "pixi.js", "gsap"]} date={new Date('05-1-2023')} folderName="water-slider">
+				<p slot="text">
+					Image slider with water ripple transition and dynamic fluid indicator dots.
+				</p>
+				<WaterSlider client:load />
+			</Item>
+			<Item title="Magnetic Button" tags={["vanilla", "gsap"]} date={new Date('01-01-2023')} folderName="magnetic-button">
+				<p slot="text">
+					A button that attracts magnetically to the mouse when hovering in the near or above and snaps back to its default position on leave.
+				</p>
+				<MagneticButton client:load>I'm magnetic!</MagneticButton>
+			</Item>
+		</div>
+	</div>
+</Layout>

@@ -1,0 +1,47 @@
+---
+import HandLink from './hand-link.astro';
+
+interface Props {
+    title: string;
+    tags: string[];
+    date?: Date;
+    folderName?: string;
+}
+
+const { title, tags, date, folderName } = Astro.props;
+
+const titleId = title.replaceAll(' ', '-').toLowerCase();
+
+---
+
+<section class="content-grid">
+    <h2 class="mt-0 mb-2 scroll-mt-10" id={titleId}>
+        <a href={`#${titleId}`} class="not-prose inline-flex items-center gap-2 group underline-offset-2 transition-[text-decoration-color] underline decoration-transparent hover:decoration-current focus-visible:decoration-current">
+            <div class="size-5 inline-block translate-y-[3.5px] transition-opacity opacity-60">
+                <HandLink />
+            </div>
+            {title}
+        </a>
+    </h2>
+    <slot name="text" />
+    <div class="not-prose">
+        {tags.length > 0 && (
+            <ul class="flex gap-3 pb-4">
+                {tags.map((tag) => (
+                    <li class="bg-white border border-border shadow-sm px-1.5 py-1 leading-none text-sm rounded-md">{tag}</li>
+                ))}
+            </ul>
+        )}
+    </div>
+    <div class="aspect-[4/3] border border-border breakout rounded-md not-prose bg-white">
+        <div class="size-full relative grid place-items-center">
+            <slot />
+        </div>
+    </div>
+    <div class="flex items-center justify-between mt-4 gap-5">
+        {date && (
+            <time class="text-muted font-handwriting text-2xl" datetime={date.toISOString()}>{date.toLocaleDateString('en-EN', { month: 'long', year: 'numeric' })}</time>
+        )}
+        <a href={`https://github.com/jramke/crafts/tree/main/src/crafts/${folderName}`} target="_blank">Source</a>
+    </div>
+</section>
