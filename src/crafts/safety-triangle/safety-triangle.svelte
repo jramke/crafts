@@ -58,11 +58,16 @@
             <button><span>Logout</span></button>
         </li>
     </ul>
-    <label class="debug-switch cursor-pointer">
-        <input checked={debug} on:change={(e) => debug = e.target.checked} type="checkbox" value="" class="peer appearance-none">
-        <div class="relative w-[38px] h-[21px] bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-offset-2 peer-focus:ring-foreground rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-foreground"></div>
-        <span class="ms-2 text-sm">Show safety triangles</span>
-    </label>
+    <div class="controls p-2 md:p-4">
+        <label class="flex items-center justify-center cursor-pointer">
+            <input checked={debug} on:change={(e) => debug = e.target.checked} type="checkbox" value="" class="peer appearance-none">
+            <div class="flex-shrink-0 relative w-[38px] h-[21px] bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-offset-2 peer-focus:ring-foreground rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-foreground"></div>
+            <span class="ms-2 text-xs md:text-sm whitespace-nowrap">Show safety triangles</span>
+        </label>
+        <div class="mobile-hint hidden">
+            <span class="text-xs">Safety triangles don't work on touch screens.</span>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -152,7 +157,7 @@
         fill: var(--triangle-fill-color);
     }
 
-    .debug-switch {
+    .controls {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -160,7 +165,7 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        padding: 1rem;
+        width: 100%;
     }
 
     @media (min-width: 590px) {
@@ -173,6 +178,12 @@
     @media not (pointer: fine) {
         #safety-triangle-demo :global(.safety-triangle) {
             display: none;
+        }
+        .controls label {
+            display: none;
+        }
+        .mobile-hint {
+            display: block;
         }
     }
 </style>
