@@ -7,6 +7,7 @@ import HandPathThin from '../components/hand-path-thin.astro';
 import { MagneticButton } from '../crafts/magnetic-button';
 import { SafetyTriangle } from '../crafts/safety-triangle';
 import { WaterSlider } from '../crafts/water-slider';
+import { ElasticDiv } from '../crafts/elastic-div';
 ---
 
 <Layout title="Crafts by Joost." description="Experimental UI laboratory — A collection of user interfaces, components and explorations, that seamlessly blend form and function.">
@@ -27,6 +28,14 @@ import { WaterSlider } from '../crafts/water-slider';
 			</div>
 		</div>
 		<div class="space-y-section">
+			<Item title="Elastic Div" tags={["vue", "motion"]} date={new Date('12-01-2024')} folderName="elastic-div">
+				<p slot="text">
+					A normal div with elastic bouncy edges that stick to the mouse as you move past the edges.
+				</p>
+				<ElasticDiv client:load>
+					I'm elastic!
+				</ElasticDiv>
+			</Item>
 			<Item title="Safety Triangle Menu" tags={["vanilla", "gsap"]} date={new Date('04-01-2024')} folderName="safety-triangle">
 				<p slot="text">
 					Predictive dropdown menu with visual safety indicators for smoother UX while navigating through the neseted menu items.
